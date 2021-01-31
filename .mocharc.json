@@ -1,0 +1,4 @@
+{
+    "require": ["espower-typescript/guess"],
+    "extension": ["ts"]
+}
