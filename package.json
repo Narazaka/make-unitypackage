@@ -1,12 +1,32 @@
 {
-  "name": "unitypackage-tool",
+  "name": "make-unitypackage",
   "version": "1.0.0",
-  "description": "",
+  "description": "make unitypackage! (browser compatible)",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build",
+    "build": "tsc --declaration"
   },
-  "keywords": [],
-  "author": "",
-  "license": "Zlib"
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "unity",
+    "unitypackage"
+  ],
+  "author": "narazaka",
+  "license": "Zlib",
+  "dependencies": {
+    "gzip-js": "^0.3.2",
+    "tar-js": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/gzip-js": "^0.3.2",
+    "@types/node": "^14.14.22",
+    "@types/tar-js": "^0.3.0",
+    "typescript": "^4.1.3"
+  }
 }
