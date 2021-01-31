@@ -26,7 +26,7 @@ new FSO("a.unitypackage").writeFileSync(unitypackage);
 browser:
 
 ```typescript
-import { makeUnityPackage } from "../index";
+import { makeUnityPackage } from "make-unitypackage";
 
 const files = [
     {
