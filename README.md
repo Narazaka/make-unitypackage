@@ -1,5 +1,7 @@
 # make-unitypackage
 
+[![build](https://github.com/Narazaka/make-unitypackage/workflows/build/badge.svg)](https://github.com/Narazaka/make-unitypackage/actions?query=workflow:build)
+
 make unitypackage! (browser compatible)
 
 ## Usage
