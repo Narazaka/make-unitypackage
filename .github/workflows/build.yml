@@ -1,0 +1,56 @@
+name: build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
+
+    strategy:
+      matrix:
+        node: ["14"]
+        os: [windows-latest]
+
+    steps:
+      - name: Set git
+        run: |
+          git config --global core.autocrlf false
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: install
+        run: npm install
+
+      - name: test
+        run: npm test
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set git
+        run: |
+          git config --global core.autocrlf false
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: install
+        run: npm install
+
+      - name: NPM Publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
