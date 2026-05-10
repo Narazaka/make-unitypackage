@@ -2,6 +2,14 @@
 
 make unitypackage! (browser compatible)
 
+## Install
+
+https://www.npmjs.com/package/make-unitypackage
+
+```bash
+npm install make-unitypackage
+```
+
 ## Usage
 
 node:
