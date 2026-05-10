@@ -1,5 +1,9 @@
 node_modules
 *.js
 *.d.ts
+*.cjs
+*.d.cts
+*.mjs
+*.d.mts
 *.unitypackage
 package-lock.json

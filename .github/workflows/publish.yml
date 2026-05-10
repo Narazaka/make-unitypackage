@@ -1,15 +1,17 @@
-name: build
+name: publish
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
-
     steps:
       - name: Setup repo
         uses: actions/checkout@v6
@@ -18,9 +20,14 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
+          registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false
 
       - name: install
         run: npm install
 
       - name: test
         run: npm test
+
+      - name: publish
+        run: npm publish

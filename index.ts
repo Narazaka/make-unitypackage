@@ -1,5 +1,5 @@
-import { zip } from "gzip-js";
-import * as Tar from "tar-js"; // esbuild wrong compile with `import * as Tar ...`
+import { gzipSync } from "fflate";
+import Tar from "tar-js";
 
 export interface FileInfo {
     path: string;
@@ -40,7 +40,7 @@ export function makeUnityPackageRaw(files: FileInfo[]) {
         tar.append(`${meta.guid}/asset.meta`, files[meta.index].data);
         tar.append(`${meta.guid}/pathname`, targetPath);
     }
-    return zip(tar.out as any, {name: "archtemp.tar"});;
+    return gzipSync(tar.out, {filename: "archtemp.tar"});;
 }
 
 export function makeUnityPackage(files: FileInfo[]) {

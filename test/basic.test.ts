@@ -1,5 +1,5 @@
-import * as assert from "power-assert";
-import { makeUnityPackage } from "../index";
+import {assert, describe, it} from "vitest"
+import { makeUnityPackage } from "../index.js";
 
 const files = [
     {
@@ -15,6 +15,6 @@ const files = [
 describe("makeUnityPackage", () => {
     it("should make unitypackage", () => {
         const unitypackage = makeUnityPackage(files);
-        assert(unitypackage instanceof Uint8Array);
+        assert.instanceOf(unitypackage, Uint8Array);
     });
 });
