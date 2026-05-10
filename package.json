@@ -33,6 +33,9 @@
     "unitypackage"
   ],
   "author": "narazaka",
+  "repository": {
+    "url": "https://github.com/Narazaka/make-unitypackage"
+  },
   "license": "Zlib",
   "dependencies": {
     "fflate": "^0.8.2",
