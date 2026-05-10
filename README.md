@@ -22,7 +22,7 @@ const assets = new FSO("./Assets");
 const files = [];
 for (const entry of assets.join("Foo").childrenAllSync().filter(entry => !entry.isDirectorySync())) {
     files.push({
-        path: assets.relative(entry).path,
+        path: entry.path,
         data: new Uint8Array(entry.readFileSync()),
     });
 }
@@ -38,11 +38,11 @@ import { makeUnityPackage } from "make-unitypackage";
 
 const files = [
     {
-        path: "Foo/Bar.cs",
+        path: "Assets/Foo/Bar.cs",
         data: new Uint8Array(new TextEncoder().encode("using UnityEngine; public class Bar : MonoBehaviour { public GameObject obj; }")),
     },
     {
-        path: "Foo/Bar.cs.meta",
+        path: "Assets/Foo/Bar.cs.meta",
         data: new Uint8Array(new TextEncoder().encode("fileFormatVersion: 2\nguid: 02b4f861808199e4a904bba10680f423\n")),
     }
 ];
